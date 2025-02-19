@@ -1,4 +1,4 @@
-package da.chat.model;
+package da.chat.user.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

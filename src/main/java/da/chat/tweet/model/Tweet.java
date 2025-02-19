@@ -1,5 +1,6 @@
-package da.chat.model;
+package da.chat.tweet.model;
 
+import da.chat.user.model.Users;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,15 +15,11 @@ import java.util.Date;
 @AllArgsConstructor
 @ToString
 
-public class Comment {
+public class Tweet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idComment;
-
-    @ManyToOne
-    @JoinColumn(name = "idTweet" , nullable = false)
-    private Tweet tweet;
+    private Integer idTweet;
 
     @ManyToOne
     @JoinColumn(name = "idUser" , nullable = false)
@@ -32,16 +29,25 @@ public class Comment {
     private String content;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(nullable = true)
+    @Column(nullable = false)
     private Date publicationDate;
 
+    @Column(nullable = false)
+    private Integer numLikes = 0;
+
+    @Column(nullable = false)
+    private Integer numRetweets = 0;
+
+    @Column(nullable = false)
+    private Integer numComments = 0;
 }
 
-/*
-3. *Comentario*
-    - ComentarioID (PK)
-    - TweetID (FK) (relación con Tweet)
-    - UsuarioID (FK) (relación con Usuario)
-    - Contenido
-    - FechaComentario
-*/
+/*2. *Tweet*
+   - TweetID (PK)
+   - UsuarioID (FK) (relación con Usuario)
+   - Contenido
+   - FechaPublicación
+   - NumLikes
+   - NumRetweets
+   - NumComentarios*/
+

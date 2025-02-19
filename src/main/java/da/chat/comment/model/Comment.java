@@ -1,9 +1,12 @@
-package da.chat.model;
+package da.chat.comment.model;
 
+import da.chat.tweet.model.Tweet;
+import da.chat.user.model.Users;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.Date;
 
@@ -11,12 +14,13 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 
-public class Retweet {
+public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idRetweet;
+    private Integer idComment;
 
     @ManyToOne
     @JoinColumn(name = "idTweet" , nullable = false)
@@ -26,15 +30,20 @@ public class Retweet {
     @JoinColumn(name = "idUser" , nullable = false)
     private Users users;
 
+    @Column(nullable = false , length = 280)
+    private String content;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = true)
     private Date publicationDate;
 
 }
+
 /*
-5. *Retweet*
-    - RetweetID (PK)
+3. *Comentario*
+    - ComentarioID (PK)
     - TweetID (FK) (relación con Tweet)
     - UsuarioID (FK) (relación con Usuario)
-    - FechaRetwee
+    - Contenido
+    - FechaComentario
 */

@@ -1,5 +1,7 @@
-package da.chat.model;
+package da.chat.retweet.model;
 
+import da.chat.tweet.model.Tweet;
+import da.chat.user.model.Users;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,11 +14,11 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Likes {
+public class Retweet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idLike;
+    private Integer idRetweet;
 
     @ManyToOne
     @JoinColumn(name = "idTweet" , nullable = false)
@@ -31,11 +33,10 @@ public class Likes {
     private Date publicationDate;
 
 }
-
 /*
-4. *Like*
-    - LikeID (PK)
+5. *Retweet*
+    - RetweetID (PK)
     - TweetID (FK) (relación con Tweet)
     - UsuarioID (FK) (relación con Usuario)
-    - FechaLike
- */
+    - FechaRetwee
+*/
